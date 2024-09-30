@@ -7,6 +7,7 @@ const BundleAnalyzerPlugin =
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const LightningCSS = require("lightningcss");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const WebpackObfuscator = require("webpack-obfuscator")
 const path = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
 const { LightningCssMinifyPlugin } = require("lightningcss-loader");
@@ -62,6 +63,7 @@ const webpackConfig = {
         },
       }),
     !isDevelopment && new LightningCssMinifyPlugin(),
+    !isDevelopment && new WebpackObfuscator(),
     isAnalyze &&
       new BundleAnalyzerPlugin({
         analyzerMode: "static",
